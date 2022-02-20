@@ -11,13 +11,21 @@
   <title>Adivinha</title>
 </head>
 <body>
-  <h1 id="title">Que cor eu sou?</h1>
-  <p id="rgb-color"></p>
-  <div id="mystery-color"></div>
-  <p id="answer"></p>
-  <div id="posible-colors">
+  <header>
+    <h1 id="title">Que cor eu sou?</h1>
+  </header>
+  <div id="game-area">
+    <p id="rgb-color"></p>
+    <div id="mystery-color">
+      <p>Placar:</p>
+      <p id="score">0</p>
+    </div>
   </div>
-  <button id="reset-game">Reset</button>
+  <div id="play-area">
+    <p id="answer"></p>
+    <button id="reset-game">Novas<br>cores</button>
+    <div id="posible-colors"></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

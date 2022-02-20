@@ -1,9 +1,12 @@
 const writtenColor = document.querySelector('#rgb-color');
 const posibleColors = document.querySelector('#posible-colors');
 const commandText = document.querySelector('#answer');
+const mysteryColorDiv = document.querySelector('#mystery-color');
+const scoreElement = document.querySelector('#score');
+let score = 0;
 
 /*
-  getRandomColor recebe três valores aleatórios entre 0 e 255 de getRandomBtn0255 e retorna uma cor no formato rgb(x , y , z).
+  getRandomColor() recebe três valores aleatórios entre 0 e 255 de getRandomBtn0255() e retorna uma cor no formato rgb(x , y , z).
 */
 
 function getRandomBtn0255() {
@@ -19,6 +22,10 @@ function getRandomColor() {
   return colorRGB;
 }
 
+/*
+  generateColorToGuess() exibe valor rgb para ser adivinhado e retorna a cor.
+*/
+
 function generateColorToGuess() {
   const mysteryColor = getRandomColor();
   writtenColor.innerText = mysteryColor;
@@ -26,6 +33,8 @@ function generateColorToGuess() {
 }
 
 /*
+  generateColorList() cria uma lista de cores e insere aleatoriamente a cor que deverá ser adivinhada, cada cor é acompanhada pelo valor booleano que indica qual é a resposta certa.
+  Estrutura de dado da colorList:
   colorList = [
     {
       color: rgb (x , y , z),
@@ -37,6 +46,7 @@ function generateColorToGuess() {
     },
   ]
 */
+
 function generateColorList(mysteryColor) {
   const mysteryPosition = Math.round(Math.random() * 5);
   const colorList = [];
@@ -54,12 +64,26 @@ function generateColorList(mysteryColor) {
   return colorList;
 }
 
+function countPoints(hit) {
+  if (hit === true) {
+    score += 3;
+  } else {
+    score -= 1;
+  }
+  scoreElement.innerText = score;
+}
+
 function checkAnswer(event) {
+  event.target.style.border = '5px double black';
   if (event.target.classList.contains('answer')) {
     commandText.innerText = 'Acertou!';
+    countPoints(true);
   } else {
     commandText.innerText = 'Errou! Tente novamente!';
+    countPoints(false);
   }
+  const colorAnswer = document.querySelector('.answer').style.backgroundColor;
+  mysteryColorDiv.style.backgroundColor = colorAnswer;
 }
 
 function appendPosibleColors(colorList) {
@@ -87,6 +111,7 @@ function resetGame() {
   for (let i = 5; i >= 0; i -= 1) {
     posibleColors.children[i].remove();
   }
+  mysteryColorDiv.style.backgroundColor = 'white';
   setGame();
 }
 

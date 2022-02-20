@@ -5,7 +5,7 @@
 }
 
 #title {
-  font-size: 7vw;
+  font-size: 6vw;
   font-family: Alfa Slab One, cursive;
   letter-spacing: 0.06em;
 }
@@ -21,12 +21,18 @@ p {
 }
 
 #mystery-color {
+  display: inline-block;
   background-color: white;
-  width: 2em;
-  height: 2em;
-  padding: 2em;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.2em;
   border-radius: 50px;
-  margin: auto;
+  border: 5px double black;
+}
+
+#score-board {
+  display: inline-block;
+  top: 2em;
 }
 
 .ball {
@@ -35,5 +41,6 @@ p {
   height: 1.7em;
   padding: 1.7em;
   border-radius: 50px;
+  border: 5px double white;
   margin: 0 0.3em;
 }
