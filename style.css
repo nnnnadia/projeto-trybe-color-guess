@@ -3,7 +3,37 @@
   margin: 0;
 }
 
+header {
+  margin: 1.25em;
+  text-align: center;
+}
+
 #title {
-  display: inline;
+  font-size: 7vw;
   font-family: Alfa Slab One, cursive;
+  letter-spacing: 0.06em;
+}
+
+#rgb-color {
+  margin: 0.625em 0;
+  font-size: 4vw;
+  font-family: Roboto Mono, monospace;
+}
+
+#mystery-color {
+  background-color: white;
+  width: 2em;
+  height: 2em;
+  padding: 2em;
+  border-radius: 50px;
+  margin: auto;
+}
+
+.ball {
+  display: inline-block;
+  width: 1.7em;
+  height: 1.7em;
+  padding: 1.7em;
+  border-radius: 50px;
+  margin: auto;
 }
