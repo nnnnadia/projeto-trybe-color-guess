@@ -78,9 +78,20 @@ function appendPosibleColors(colorList) {
 
 function setGame() {
   const mysteryColor = generateColorToGuess();
+  commandText.innerText = 'Escolha uma cor';
   const colorList = generateColorList(mysteryColor);
   appendPosibleColors(colorList);
 }
+
+function resetGame() {
+  for (let i = 5; i >= 0; i -= 1) {
+    posibleColors.children[i].remove();
+  }
+  setGame();
+}
+
+const resetBtn = document.querySelector('#reset-game');
+resetBtn.addEventListener('click', resetGame);
 
 window.onload = () => {
   setGame();
